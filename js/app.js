@@ -2,7 +2,7 @@ let teamInput = document.querySelector("#teamInput");
 let teamInputButton = document.querySelector("#teamInputButton");
 let teamResult = document.querySelector("#teamResult");
 
-teamInputButton.addEventListener("click", () => {
+function team(){
     let teamName = teamInput.value;
 
     fetch(`https://www.thesportsdb.com//api/v1/json/3/searchteams.php?t=${teamName}`)
@@ -26,4 +26,12 @@ teamInputButton.addEventListener("click", () => {
         console.error("Bir hata oluştu:", error);
         teamResult.textContent = "Veri alınırken bir hata oluştu.";
     });
+}
+
+teamInputButton.addEventListener("click", (team));
+teamInput.addEventListener("keypress", (event) => {
+    if (event.key === "Enter") {
+        team();
+    }
 });
+
