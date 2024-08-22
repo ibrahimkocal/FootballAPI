@@ -1,0 +1,29 @@
+let teamInput = document.querySelector("#teamInput");
+let teamInputButton = document.querySelector("#teamInputButton");
+let teamResult = document.querySelector("#teamResult");
+
+teamInputButton.addEventListener("click", () => {
+    let teamName = teamInput.value;
+
+    fetch(`https://www.thesportsdb.com//api/v1/json/3/searchteams.php?t=${teamName}`)
+    .then((response) => response.json()) //parse json data
+    .then(json => {
+        // Önceki içeriği temizle
+        teamResult.innerHTML = "";
+
+        if (json.teams && json.teams.length > 0) {
+            console.log(json);
+            teamResult.innerHTML = `<h1>${json.teams[0].strTeam}</h1>`;
+            let teamStadiumName = `<h3>Stadyum: ${json.teams[0].strStadium}</h3>`;
+            let teamLocation = `<h3>Şehir: ${json.teams[0].strLocation}</h3>`;
+            teamResult.insertAdjacentHTML("beforeend", teamStadiumName);
+            teamResult.insertAdjacentHTML("beforeend", teamLocation);
+        } else {
+            teamResult.textContent = "Takım bulunamadı.";
+        }
+    })
+    .catch((error) => {
+        console.error("Bir hata oluştu:", error);
+        teamResult.textContent = "Veri alınırken bir hata oluştu.";
+    });
+});
