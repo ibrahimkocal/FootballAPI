@@ -1,5 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,351&display=swap');
 *{
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "Raleway", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 380;
+    font-style: italic;
+}
+
+html {
+    scroll-behavior: smooth; 
+}
+
+#navbarTop{
+    background-color: black;
+    width: 100%;
+    height: 45px;
+}
+
+// Renk ve Stil Değişkenleri
+$card-bg-color: #f2f2f2;
+$card-shadow-color: rgba(255, 255, 255, 0.2);
+$card-border-color: #ffffff80;
+$icon-color: #333;
+$title-color: #333;
+$description-color: #777;
+$transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+$card-width: 300px;
+$card-height: 200px;
+$card-border-radius: 10px;
+
+// Ana Kart Stili
+.card {
+  position: relative;
+  width: $card-width;
+  height: $card-height;
+  background-color: $card-bg-color;
+  border-radius: $card-border-radius;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1000px;
+  box-shadow: 0 0 0 5px $card-border-color;
+  transition: $transition;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px $card-shadow-color;
+  }
+
+  // SVG İkon Stili
+  svg {
+    width: 48px;
+    fill: $icon-color;
+    transition: $transition;
+
+    // Hover Durumunda SVG
+    .card:hover & {
+      scale: 0;
+    }
+  }
+
+  // İçerik Kartı
+  &__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: $card-bg-color;
+    transform: rotateX(-90deg);
+    transform-origin: bottom;
+    transition: $transition;
+
+    // Hover Durumunda İçerik Kartı
+    .card:hover & {
+      transform: rotateX(0deg);
+    }
+  }
+
+  // Başlık Stili
+  &__title {
+    margin-top: 20%;
+    text-align: center;
+    font-size: 24px;
+    color: $title-color;
+    font-weight: 700;
+
+    a{
+        text-decoration: none;
+        color:black;
+        
+        &:hover{
+            color: rgb(10, 10, 167);
+        }
+    }   
+  }
 }
