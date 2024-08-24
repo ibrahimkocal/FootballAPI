@@ -16,8 +16,10 @@ function team(){
             teamResult.innerHTML = `<h1>${json.teams[0].strTeam}</h1>`;
             let teamStadiumName = `<h3>Stadyum: ${json.teams[0].strStadium}</h3>`;
             let teamLocation = `<h3>Şehir: ${json.teams[0].strLocation}</h3>`;
+            let teamImage = `<img style="width:70px;" src=${json.teams[0].strBadge}>`
             teamResult.insertAdjacentHTML("beforeend", teamStadiumName);
             teamResult.insertAdjacentHTML("beforeend", teamLocation);
+            teamResult.insertAdjacentHTML("beforeend", teamImage);
         } else {
             teamResult.textContent = "Takım bulunamadı.";
         }
