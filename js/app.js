@@ -2,38 +2,60 @@ let teamInput = document.querySelector("#teamInput");
 let teamInputButton = document.querySelector("#teamInputButton");
 let teamResult = document.querySelector("#teamResult");
 
-function team(){
-    let teamName = teamInput.value;
-
-    fetch(`https://www.thesportsdb.com//api/v1/json/3/searchteams.php?t=${teamName}`)
-    .then((response) => response.json()) //parse json data
-    .then(json => {
-        // Önceki içeriği temizle
-        teamResult.innerHTML = "";
-
-        if (json.teams && json.teams.length > 0) {
-            console.log(json);
-            teamResult.innerHTML = `<h1>${json.teams[0].strTeam}</h1>`;
-            let teamStadiumName = `<h3>Stadyum: ${json.teams[0].strStadium}</h3>`;
-            let teamLocation = `<h3>Şehir: ${json.teams[0].strLocation}</h3>`;
-            let teamImage = `<img style="width:70px;" src=${json.teams[0].strBadge}>`
-            teamResult.insertAdjacentHTML("beforeend", teamStadiumName);
-            teamResult.insertAdjacentHTML("beforeend", teamLocation);
-            teamResult.insertAdjacentHTML("beforeend", teamImage);
-        } else {
-            teamResult.textContent = "Takım bulunamadı.";
-        }
-    })
-    .catch((error) => {
-        console.error("Bir hata oluştu:", error);
-        teamResult.textContent = "Veri alınırken bir hata oluştu.";
-    });
+function displayTeamInfo(teamInfo) {
+    teamResult.innerHTML = "";
+    if (teamInfo) {
+        let team_Name = `<h1>${teamInfo.team_Name}</h1>`;
+        let teamStadiumName = `<h3>Stadyum: ${teamInfo.teamStadiumName}</h3>`;
+        let teamLocation = `<h3>Şehir: ${teamInfo.teamLocation}</h3>`;
+        let teamImage = `<img style="width:70px;" src="${teamInfo.teamImage}">`;
+        teamResult.insertAdjacentHTML("beforeend", team_Name);
+        teamResult.insertAdjacentHTML("beforeend", teamStadiumName);
+        teamResult.insertAdjacentHTML("beforeend", teamLocation);
+        teamResult.insertAdjacentHTML("beforeend", teamImage);
+    } else {
+        teamResult.textContent = "Takım bulunamadı.";
+    }
 }
 
-teamInputButton.addEventListener("click", (team));
-teamInput.addEventListener("keypress", (event) => {
+function fetchTeam() {
+    let teamName = teamInput.value;
+
+    fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamName}`)
+        .then(response => response.json())
+        .then(json => {
+            let teamInfo = null;
+            if (json.teams && json.teams.length > 0) {
+                let team = json.teams[0];
+                teamInfo = {
+                    team_Name: team.strTeam,
+                    teamStadiumName: team.strStadium,
+                    teamLocation: team.strLocation,
+                    teamImage: team.strBadge
+                };
+                sessionStorage.setItem('teamInfo', JSON.stringify(teamInfo));  // sessionStorage kullanımı
+            }
+            displayTeamInfo(teamInfo);
+        })
+        .catch(error => {
+            console.error("Bir hata oluştu:", error);
+            teamResult.textContent = "Veri alınırken bir hata oluştu.";
+        });
+}
+
+function loadSavedTeamInfo() {
+    let savedTeamInfo = sessionStorage.getItem('teamInfo');  // sessionStorage'dan veri alınıyor
+    if (savedTeamInfo) {
+        displayTeamInfo(JSON.parse(savedTeamInfo));
+    }
+}
+
+// Sayfa yüklendiğinde, daha önce kaydedilmiş takımı göster
+document.addEventListener("DOMContentLoaded", loadSavedTeamInfo);
+
+teamInputButton.addEventListener("click", fetchTeam);
+teamInput.addEventListener("keypress", event => {
     if (event.key === "Enter") {
-        team();
+        fetchTeam();
     }
 });
-
