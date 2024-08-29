@@ -13,10 +13,45 @@ html {
     scroll-behavior: smooth; 
 }
 
+$black : black;
+$dark: dark;
+$white: white;
+
+body {
+  background-color: $black; 
+  color: $white;
+}
+
 #navbarTop{
     background-color: black;
     width: 100%;
     height: 45px;
+}
+
+#home {
+  background-image: url(../img/photo1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50%;
+  min-height: 700px;
+
+  .img-overlay {
+      position: absolute;
+      top: 1;
+      left: 0;
+      width: 100%;
+      min-height: 700px;
+      background: rgba($color: #000000, $alpha: 0.8);
+  }
+}
+
+.home-inner {
+    padding-top: 150px;
+}
+
+#info{
+  font-size: 25px;
 }
 
 // Renk ve Stil Değişkenleri
@@ -100,4 +135,38 @@ $card-border-radius: 10px;
         }
     }   
   }
+}
+
+/* FOOTER */
+$discord : #5865F2;
+$linkedin: #0077b5;
+$instagram: #F103D2;
+$github: #333;
+$shop: green;
+
+@mixin button-style($color) {
+  color: #fff; 
+  transition: background-color 0.3s, color 0.3s;
+
+  &:hover {
+    background-color: $color;
+    color: #fff; 
+    border-color: $color;
+  }
+} 
+
+.discord {
+  @include button-style($discord);
+}
+
+.linkedin {
+  @include button-style($linkedin);
+}
+
+.instagram {
+  @include button-style($instagram);
+}
+
+.github {
+  @include button-style($github);
 }

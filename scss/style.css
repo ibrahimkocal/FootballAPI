@@ -13,10 +13,40 @@ html {
   scroll-behavior: smooth;
 }
 
+body {
+  background-color: black;
+  color: white;
+}
+
 #navbarTop {
   background-color: black;
   width: 100%;
   height: 45px;
+}
+
+#home {
+  background-image: url(../img/photo1.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50%;
+  min-height: 700px;
+}
+#home .img-overlay {
+  position: absolute;
+  top: 1;
+  left: 0;
+  width: 100%;
+  min-height: 700px;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.home-inner {
+  padding-top: 150px;
+}
+
+#info {
+  font-size: 25px;
 }
 
 .card {
@@ -74,4 +104,45 @@ html {
 }
 .card__title a:hover {
   color: rgb(10, 10, 167);
+}
+
+/* FOOTER */
+.discord {
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.discord:hover {
+  background-color: #5865F2;
+  color: #fff;
+  border-color: #5865F2;
+}
+
+.linkedin {
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.linkedin:hover {
+  background-color: #0077b5;
+  color: #fff;
+  border-color: #0077b5;
+}
+
+.instagram {
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.instagram:hover {
+  background-color: #F103D2;
+  color: #fff;
+  border-color: #F103D2;
+}
+
+.github {
+  color: #fff;
+  transition: background-color 0.3s, color 0.3s;
+}
+.github:hover {
+  background-color: #333;
+  color: #fff;
+  border-color: #333;
 }/*# sourceMappingURL=style.css.map */
