@@ -22,33 +22,41 @@ body {
   color: $white;
 }
 
-#navbarTop{
-    background-color: black;
-    width: 100%;
-    height: 45px;
-}
+// SAYFA FOTOĞRAFLARI //
 
-#home {
-  background-image: url(../img/photo1.jpg);
+$mainPhoto: photo1;
+$stslPhoto: photo2;
+
+@mixin image-url($imageUrl) {
+  background-image: url("../img/#{$imageUrl}.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-position: 50%;
+  background-position: 50% 100px;
   min-height: 700px;
 
   .img-overlay {
-      position: absolute;
-      top: 1;
-      left: 0;
-      width: 100%;
-      min-height: 700px;
-      background: rgba($color: #000000, $alpha: 0.8);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    min-height: 700px;
+    background: rgba(0, 0, 0, 0.8);
+  }
+
+  .home-inner {
+    padding-top: 150px;
   }
 }
 
-.home-inner {
-    padding-top: 150px;
+#home {
+  @include image-url($mainPhoto);
 }
+
+#teams {
+  @include image-url($stslPhoto);
+}
+
+
 
 #info{
   font-size: 25px;

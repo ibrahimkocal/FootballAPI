@@ -18,30 +18,41 @@ body {
   color: white;
 }
 
-#navbarTop {
-  background-color: black;
-  width: 100%;
-  height: 45px;
-}
-
 #home {
-  background-image: url(../img/photo1.jpg);
+  background-image: url("../img/photo1.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
-  background-position: 50%;
+  background-position: 50% 100px;
   min-height: 700px;
 }
 #home .img-overlay {
   position: absolute;
-  top: 1;
   left: 0;
   width: 100%;
   min-height: 700px;
   background: rgba(0, 0, 0, 0.8);
 }
+#home .home-inner {
+  padding-top: 150px;
+}
 
-.home-inner {
+#teams {
+  background-image: url("../img/photo2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 100px;
+  min-height: 700px;
+}
+#teams .img-overlay {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  min-height: 700px;
+  background: rgba(0, 0, 0, 0.8);
+}
+#teams .home-inner {
   padding-top: 150px;
 }
 
