@@ -1,3 +1,4 @@
+@charset "UTF-8";
 @import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@1,351&display=swap");
 * {
   margin: 0;
@@ -14,7 +15,6 @@ html {
 }
 
 body {
-  background-color: black;
   color: white;
 }
 
@@ -28,32 +28,56 @@ body {
 }
 #home .img-overlay {
   position: absolute;
+  top: 1;
   left: 0;
   width: 100%;
   min-height: 700px;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(18, 18, 18, 0.8);
 }
 #home .home-inner {
-  padding-top: 150px;
+  padding-top: 80px;
+}
+#home h2 {
+  font-size: 40px;
 }
 
-#teams {
+/* SÜPER LİG SAYFASI */
+#leagues {
   background-image: url("../img/photo2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: 50% 100px;
-  min-height: 700px;
+  min-height: 1330px;
 }
-#teams .img-overlay {
+#leagues .img-overlay {
   position: absolute;
+  top: 1;
   left: 0;
   width: 100%;
-  min-height: 700px;
-  background: rgba(0, 0, 0, 0.8);
+  min-height: 1330px;
+  background: rgba(18, 18, 18, 0.8);
 }
-#teams .home-inner {
-  padding-top: 150px;
+#leagues .home-inner {
+  padding-top: 80px;
+}
+#leagues h2 {
+  font-size: 40px;
+}
+#leagues a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  transition: 0.3s;
+}
+#leagues a:hover {
+  color: rgb(10, 184, 7);
+}
+#leagues h5 {
+  font-size: 27px;
+}
+#leagues p {
+  font-size: 20px;
 }
 
 #info {
@@ -62,8 +86,8 @@ body {
 
 .card {
   position: relative;
-  width: 300px;
-  height: 200px;
+  width: 250px;
+  height: 170px;
   background-color: #f2f2f2;
   border-radius: 10px;
   display: flex;
@@ -118,6 +142,10 @@ body {
 }
 
 /* FOOTER */
+footer {
+  background-color: black;
+}
+
 .discord {
   color: #fff;
   transition: background-color 0.3s, color 0.3s;
@@ -156,4 +184,45 @@ body {
   background-color: #333;
   color: #fff;
   border-color: #333;
+}
+
+/* media screen */
+@media only screen and (max-width: 578px) {
+  #leagues {
+    background-image: url("../img/photo2.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: 50% 100px;
+    min-height: 1750px;
+  }
+  #leagues .img-overlay {
+    position: absolute;
+    top: 1;
+    left: 0;
+    width: 100%;
+    min-height: 1750px;
+    background: rgba(18, 18, 18, 0.8);
+  }
+  #leagues .home-inner {
+    padding-top: 80px;
+  }
+  #leagues h2 {
+    font-size: 40px;
+  }
+  #leagues a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+  }
+  #leagues a:hover {
+    color: rgb(10, 184, 7);
+  }
+  #leagues h5 {
+    font-size: 27px;
+  }
+  #leagues p {
+    font-size: 20px;
+  }
 }/*# sourceMappingURL=style.css.map */

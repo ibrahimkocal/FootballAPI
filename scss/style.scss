@@ -10,53 +10,74 @@
 }
 
 html {
-    scroll-behavior: smooth; 
+  scroll-behavior: smooth; 
 }
 
-$black : black;
 $dark: dark;
 $white: white;
 
 body {
-  background-color: $black; 
   color: $white;
 }
 
 // SAYFA FOTOĞRAFLARI //
-
 $mainPhoto: photo1;
 $stslPhoto: photo2;
 
-@mixin image-url($imageUrl) {
+@mixin image-url($imageUrl, $height){
   background-image: url("../img/#{$imageUrl}.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed;
   background-position: 50% 100px;
-  min-height: 700px;
+  min-height: $height;
 
   .img-overlay {
     position: absolute;
+    top: 1;
     left: 0;
     width: 100%;
-    min-height: 700px;
-    background: rgba(0, 0, 0, 0.8);
+    min-height: $height;
+    background: rgba(18, 18, 18, 0.8);
   }
 
   .home-inner {
-    padding-top: 150px;
+    padding-top: 80px;
+  }
+
+  h2{
+    font-size: 40px;
   }
 }
 
 #home {
-  @include image-url($mainPhoto);
+  @include image-url($mainPhoto, 700px);
 }
 
-#teams {
-  @include image-url($stslPhoto);
+/* SÜPER LİG SAYFASI */
+
+#leagues {
+  @include image-url($stslPhoto, 1330px);
+
+  a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+    
+    &:hover{
+        color: rgb(10, 184, 7);
+    }
+  }   
+
+  h5{
+    font-size: 27px;
+  }
+
+  p{
+    font-size: 20px;
+  }
 }
-
-
 
 #info{
   font-size: 25px;
@@ -70,8 +91,8 @@ $icon-color: #333;
 $title-color: #333;
 $description-color: #777;
 $transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-$card-width: 300px;
-$card-height: 200px;
+$card-width: 250px;
+$card-height: 170px;
 $card-border-radius: 10px;
 
 // Ana Kart Stili
@@ -150,7 +171,11 @@ $discord : #5865F2;
 $linkedin: #0077b5;
 $instagram: #F103D2;
 $github: #333;
-$shop: green;
+$footerBackground: black;
+
+footer{
+  background-color: $footerBackground;
+}
 
 @mixin button-style($color) {
   color: #fff; 
@@ -178,3 +203,30 @@ $shop: green;
 .github {
   @include button-style($github);
 }
+
+
+/* media screen */
+@media only screen and (max-width: 578px) {
+  #leagues {
+    @include image-url($stslPhoto, 1750px);
+  
+    a{
+      text-decoration: none;
+      color: white;
+      font-size: 20px;
+      transition: 0.3s;
+      
+      &:hover{
+          color: rgb(10, 184, 7);
+      }
+    }   
+  
+    h5{
+      font-size: 27px;
+    }
+  
+    p{
+      font-size: 20px;
+    }
+  }
+} 
