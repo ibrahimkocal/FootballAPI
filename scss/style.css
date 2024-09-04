@@ -48,14 +48,14 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: 50% 100px;
-  min-height: 1550px;
+  min-height: 2000px;
 }
 #leagues .img-overlay {
   position: absolute;
   top: 1;
   left: 0;
   width: 100%;
-  min-height: 1550px;
+  min-height: 2000px;
   background: rgba(18, 18, 18, 0.8);
 }
 #leagues .home-inner {
@@ -88,11 +88,11 @@ tbody tr th, td {
   border: none;
 }
 
-#leagueInfo h5, #leaguePuanDurumu h5 {
+#leagueInfo h5, #leaguePuanDurumu h5, #teams h5 {
   text-decoration: underline;
   font-size: 20px;
 }
-#leagueInfo p, #leaguePuanDurumu p {
+#leagueInfo p, #leaguePuanDurumu p, #teams p {
   font-size: 17px;
 }
 

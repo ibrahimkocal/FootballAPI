@@ -5,6 +5,7 @@ let leagueLogo = document.querySelector("#leagueLogo");
 let leaguePoster = document.querySelector("#leaguePoster");
 let leagueInfo = document.querySelector("#leagueInfo");
 let leaguePuanDurumu = document.querySelector("#leaguePuanDurumu");
+let teamsDOM = document.querySelector("#teams");
 
 // LİG BİLGİLERİ //
 fetch(`https://www.thesportsdb.com/api/v1/json/3/search_all_leagues.php?c=Turkiye`)
@@ -44,9 +45,6 @@ fetch('https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4339&s=2024-2
     .then(response => response.json())
     .then(data => {
       let table = data.table;
-      let g = "";
-      let b = "";
-      let l = "";
       let tableContent = `<h5>Puan Durumu</h5>`;
       tableContent += `<div class="d-flex">
                          <div class="row">
@@ -90,3 +88,30 @@ fetch('https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4339&s=2024-2
       leaguePuanDurumu.innerHTML = tableContent;
     })
   .catch(error => console.error('API isteği sırasında bir hata oluştu:', error)); 
+
+// TAKIMLAR //
+fetch('https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=Turkish%20Super%20Lig')
+  .then(response => response.json())
+  .then(data => {
+    let teams = data.teams;
+    let teamsContent = `<h5>Takımlar</h5><div class="row">`;
+    let counter = 0;
+
+    teams.forEach((element, index) => {
+      teamsContent += `
+        <div class="col-4 text-center">
+          <img src="${element.strBadge}" alt="${element.strTeam}" class="img-fluid">
+          <a style="font-size:18px;" href="#" class="mt-2">${element.strTeam}</a>
+        </div>`;
+      counter++;
+
+      // Her 3 takımda bir yeni satır aç
+      if (counter % 3 === 0 && index !== teams.length - 1) {
+        teamsContent += `</div><div class="row mt-2">`;
+      }
+    });
+
+    teamsContent += `</div>`; // Kapanmamış div'i kapat
+    teamsDOM.innerHTML = teamsContent;
+  })
+  .catch(error => console.error('API isteği sırasında bir hata oluştu:', error));

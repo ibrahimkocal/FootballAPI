@@ -57,7 +57,7 @@ $stslPhoto: photo2;
 /* SÜPER LİG SAYFASI */
 
 #leagues {
-  @include image-url($stslPhoto, 1550px);
+  @include image-url($stslPhoto, 2000px);
 
   a{
     text-decoration: none;
@@ -86,7 +86,7 @@ tbody tr th, td{
   border: none;
 }
 
-#leagueInfo, #leaguePuanDurumu{
+#leagueInfo, #leaguePuanDurumu, #teams{
   h5{
     text-decoration: underline;
     font-size: 20px;
