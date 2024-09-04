@@ -57,7 +57,7 @@ $stslPhoto: photo2;
 /* SÜPER LİG SAYFASI */
 
 #leagues {
-  @include image-url($stslPhoto, 1330px);
+  @include image-url($stslPhoto, 1550px);
 
   a{
     text-decoration: none;
@@ -81,6 +81,20 @@ $stslPhoto: photo2;
 
 #info{
   font-size: 25px;
+}
+tbody tr th, td{
+  border: none;
+}
+
+#leagueInfo, #leaguePuanDurumu{
+  h5{
+    text-decoration: underline;
+    font-size: 20px;
+  }
+
+  p{
+    font-size: 17px;
+  }
 }
 
 // Renk ve Stil Değişkenleri
