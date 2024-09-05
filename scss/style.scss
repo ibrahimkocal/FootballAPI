@@ -220,9 +220,11 @@ footer{
 
 
 /* media screen */
+
+
 @media only screen and (max-width: 578px) {
   #leagues {
-    @include image-url($stslPhoto, 1750px);
+    @include image-url($stslPhoto, 4250px);
   
     a{
       text-decoration: none;
@@ -243,4 +245,20 @@ footer{
       font-size: 20px;
     }
   }
+
+  #leagueInfo, #leaguePuanDurumu, #teams{
+    h5{
+      text-decoration: underline;
+      font-size: 28px;
+    }
+  
+    p{
+      font-size: 15px;
+    }
+
+    tbody tr th, td{
+      font-size: 12px;
+    }
+  }
 } 
+

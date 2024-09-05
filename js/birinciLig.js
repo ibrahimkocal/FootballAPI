@@ -12,41 +12,46 @@ fetch(`https://www.thesportsdb.com/api/v1/json/3/search_all_leagues.php?c=Turkiy
   .then(response => response.json())
   .then(data => {
     let leagues = data.countries;
-    let league_Name = leagues[0].strLeague;
-    let league_Kurulus = leagues[0].intFormedYear;
-    let league_Country = leagues[0].strCountry;
-    let league_Tv = leagues[0].strTvRights;
-    let league_Logo = leagues[0].strBadge;
-    let league_Poster = leagues[0].strPoster;
-    let league_Info = leagues[0].strDescriptionEN;
-
-    leagueName_Title.textContent = `${league_Name}`
-    about.innerHTML = `<h5>Kuruluş</h5>
-              <p>${league_Kurulus}</p>
-              <br>
-              <h5>Ülke</h5>
-              <p>${league_Country}</p>
-              <br>
-              <h5>TV</h5>
-              <p>${league_Tv}</p>`
-    leagueName.innerHTML = `<h5>Lig Adı</h5>
-              <a id="leagueName" href="">${league_Name}</a>`              
-    leagueLogo.innerHTML = `<h5>Logo</h5>
-              <img src="${league_Logo}" width="190">`    
-    leaguePoster.innerHTML = `<h5>Poster</h5>
-              <img src="${league_Poster}" width="220">`      
-    leagueInfo.innerHTML = ` <h5>Tanım</h5>
-              <p>${league_Info}</p>`               
+    leagues.forEach(element => {
+        if (element.idLeague === 4676){
+            let league_Name = leagues.strLeague;
+            let league_Kurulus = leagues.intFormedYear;
+            let league_Country = leagues.strCountry;
+            let league_Tv = leagues.strTvRights;
+            let league_Logo = leagues.strBadge;
+            let league_Poster = leagues.strPoster;
+            let league_Info = leagues.strDescriptionEN;
+    
+            leagueName_Title.textContent = `${league_Name}`
+            about.innerHTML = `<h5>Kuruluş</h5>
+                    <p>${league_Kurulus}</p>
+                    <br>
+                    <h5>Ülke</h5>
+                    <p>${league_Country}</p>
+                    <br>
+                    <h5>TV</h5>
+                    <p>${league_Tv}</p>`
+            leagueName.innerHTML = `<h5>Lig Adı</h5>
+                    <a id="leagueName" href="">${league_Name}</a>`              
+            leagueLogo.innerHTML = `<h5>Logo</h5>
+                    <img src="${league_Logo}" width="190">`    
+            leaguePoster.innerHTML = `<h5>Poster</h5>
+                    <img src="${league_Poster}" width="220">`      
+            leagueInfo.innerHTML = ` <h5>Tanım</h5>
+                    <p>${league_Info}</p>`               
+            }  
+    });
+    
   })
   .catch(error => console.error('API isteği sırasında bir hata oluştu:', error)); 
 
 // PUAN DURUMU //  
-fetch('https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4339&s=2024-2025')
+fetch('https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4676&s=2024-2025')
     .then(response => response.json())
     .then(data => {
       let table = data.table;
 
-      let tableContent = `<h5 class="text-center text-md-start">Puan Durumu</h5>`;
+      let tableContent = `<h5 class="text-center text-lg-start">Puan Durumu</h5>`;
       tableContent += `<div class="d-flex">
                          <div class="row">
                            <table class="table text-white">
@@ -71,8 +76,7 @@ fetch('https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=4339&s=2024-2
         tableContent += `<tr>
                           <th scope="row">${table[i].intRank}.</th>
                           <td><img src="${table[i].strBadge}" width="24"></td>
-                          <td class="d-block d-md-none">${table[i].strTeam.substring(0, 3).toUpperCase()}</td>
-                          <td class="d-none d-md-block">${table[i].strTeam}</td>
+                          <td>${table[i].strTeam}</td>
                           <td>${table[i].intPlayed}</td>
                           <td>${table[i].intWin}</td>
                           <td>${table[i].intDraw}</td>
@@ -107,12 +111,13 @@ fetch('https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=Turkish%
         </div>`;
       counter++;
 
+      // Her 3 takımda bir yeni satır aç
       if (counter % 3 === 0 && index !== teams.length - 1) {
         teamsContent += `</div><div class="row mt-2">`;
       }
     });
 
-    teamsContent += `</div>`;
+    teamsContent += `</div>`; // Kapanmamış div'i kapat
     teamsDOM.innerHTML = teamsContent;
   })
   .catch(error => console.error('API isteği sırasında bir hata oluştu:', error));

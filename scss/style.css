@@ -206,14 +206,14 @@ footer {
     background-size: cover;
     background-attachment: fixed;
     background-position: 50% 100px;
-    min-height: 1750px;
+    min-height: 4250px;
   }
   #leagues .img-overlay {
     position: absolute;
     top: 1;
     left: 0;
     width: 100%;
-    min-height: 1750px;
+    min-height: 4250px;
     background: rgba(18, 18, 18, 0.8);
   }
   #leagues .home-inner {
@@ -236,5 +236,15 @@ footer {
   }
   #leagues p {
     font-size: 20px;
+  }
+  #leagueInfo h5, #leaguePuanDurumu h5, #teams h5 {
+    text-decoration: underline;
+    font-size: 28px;
+  }
+  #leagueInfo p, #leaguePuanDurumu p, #teams p {
+    font-size: 15px;
+  }
+  #leagueInfo tbody tr th, #leagueInfo td, #leaguePuanDurumu tbody tr th, #leaguePuanDurumu td, #teams tbody tr th, #teams td {
+    font-size: 12px;
   }
 }/*# sourceMappingURL=style.css.map */
