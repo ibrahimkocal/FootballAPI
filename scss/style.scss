@@ -52,7 +52,12 @@ $stslPhoto: photo2;
 
 #home {
   @include image-url($mainPhoto, 700px);
+  
+  p{
+    font-size: 25px;
+  }
 }
+
 
 /* SÜPER LİG SAYFASI */
 

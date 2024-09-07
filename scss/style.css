@@ -40,6 +40,9 @@ body {
 #home h2 {
   font-size: 40px;
 }
+#home p {
+  font-size: 25px;
+}
 
 /* SÜPER LİG SAYFASI */
 #leagues {
