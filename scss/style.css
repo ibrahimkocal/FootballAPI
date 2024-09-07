@@ -48,14 +48,14 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: 50% 100px;
-  min-height: 2000px;
+  min-height: 1800px;
 }
 #leagues .img-overlay {
   position: absolute;
   top: 1;
   left: 0;
   width: 100%;
-  min-height: 2000px;
+  min-height: 1800px;
   background: rgba(18, 18, 18, 0.8);
 }
 #leagues .home-inner {
@@ -199,21 +199,21 @@ footer {
 }
 
 /* media screen */
-@media only screen and (max-width: 578px) {
+@media only screen and (max-width: 1000px) {
   #leagues {
     background-image: url("../img/photo2.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position: 50% 100px;
-    min-height: 4250px;
+    min-height: 4360px;
   }
   #leagues .img-overlay {
     position: absolute;
     top: 1;
     left: 0;
     width: 100%;
-    min-height: 4250px;
+    min-height: 4360px;
     background: rgba(18, 18, 18, 0.8);
   }
   #leagues .home-inner {

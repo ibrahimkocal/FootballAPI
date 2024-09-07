@@ -57,7 +57,7 @@ $stslPhoto: photo2;
 /* SÜPER LİG SAYFASI */
 
 #leagues {
-  @include image-url($stslPhoto, 2000px);
+  @include image-url($stslPhoto, 1800px);
 
   a{
     text-decoration: none;
@@ -222,9 +222,9 @@ footer{
 /* media screen */
 
 
-@media only screen and (max-width: 578px) {
+@media only screen and (max-width: 1000px) {
   #leagues {
-    @include image-url($stslPhoto, 4250px);
+    @include image-url($stslPhoto, 4360px);
   
     a{
       text-decoration: none;
