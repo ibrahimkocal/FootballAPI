@@ -25,10 +25,24 @@ document.addEventListener('DOMContentLoaded', () => {
       id: "4328",
       url: "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=English%20Premier%20League",
       country: "England"
+    },
+    "laLiga":{
+      id: "4335",
+      url: "https://thesportsdb.com/api/v1/json/3/search_all_teams.php?l=Spanish%20La%20Liga",
+      country: "Spain"
+    },
+    "serieA":{
+      id: "4332",
+      url: "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=Italian%20Serie%20A",
+      country: "Italy"
+    },
+    "ligue1":{
+      id: "4334",
+      url: "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=French%20Ligue%201",
+      country: "France"
     }
   };
 
-  // URL parametrelerini al
   const urlParams = new URLSearchParams(window.location.search);
   const leagueParam = urlParams.get('league');
 
@@ -115,29 +129,30 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // TAKIMLAR
           fetch(url)
-            .then(response => response.json())
-            .then(data => {
+          .then(response => response.json())
+          .then(data => {
               let teams = data.teams;
               let teamsContent = `<h5>Takımlar</h5><div class="row">`;
               let counter = 0;
 
               teams.forEach((element, index) => {
-                teamsContent += `
-                                  <div class="col-4 text-center">
-                                  <img src="${element.strBadge}" alt="${element.strTeam}" class="img-fluid">
-                                  <a style="font-size:18px;" href="#" class="mt-2">${element.strTeam}</a>
-                                  </div>`;
-                counter++;
+                  teamsContent += `
+                      <div class="col-4 text-center">
+                          <img src="${element.strBadge}" alt="${element.strTeam}" class="img-fluid">
+                          <a style="font-size:18px;" href="teams.html?teamName=${element.strTeam}" class="mt-2">${element.strTeam}</a>
+                      </div>`;
+                  counter++;
 
-                if (counter % 3 === 0 && index !== teams.length - 1) {
-                  teamsContent += `</div><div class="row mt-2">`;
-                }
+                  if (counter % 3 === 0 && index !== teams.length - 1) {
+                      teamsContent += `</div><div class="row mt-2">`;
+                  }
               });
 
               teamsContent += `</div>`;
               teamsDOM.innerHTML = teamsContent;
-            })
-            .catch(error => console.error('Takımlar isteği sırasında bir hata oluştu:', error));
+          })
+         .catch(error => console.error('Takımlar isteği sırasında bir hata oluştu:', error));
+
         } else {
           console.error('Lig bilgisi bulunamadı.');
         }

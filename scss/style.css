@@ -99,6 +99,44 @@ tbody tr th, td {
   font-size: 17px;
 }
 
+#teamDetails {
+  background-image: url("../img/photo2.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: 50% 100px;
+  min-height: 1800px;
+}
+#teamDetails .img-overlay {
+  position: absolute;
+  top: 1;
+  left: 0;
+  width: 100%;
+  min-height: 1800px;
+  background: rgba(18, 18, 18, 0.8);
+}
+#teamDetails .home-inner {
+  padding-top: 80px;
+}
+#teamDetails h2 {
+  font-size: 40px;
+}
+#teamDetails a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  transition: 0.3s;
+}
+#teamDetails a:hover {
+  color: rgb(10, 184, 7);
+}
+#teamDetails h5 {
+  font-size: 27px;
+}
+#teamDetails p {
+  font-size: 20px;
+}
+
 .card {
   position: relative;
   width: 250px;

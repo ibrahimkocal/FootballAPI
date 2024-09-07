@@ -58,7 +58,6 @@ $stslPhoto: photo2;
   }
 }
 
-
 /* SÜPER LİG SAYFASI */
 
 #leagues {
@@ -99,6 +98,30 @@ tbody tr th, td{
 
   p{
     font-size: 17px;
+  }
+}
+
+// TAKIMLAR SAYFASI //
+#teamDetails{
+  @include image-url($stslPhoto, 1800px);
+
+  a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+    
+    &:hover{
+        color: rgb(10, 184, 7);
+    }
+  }   
+
+  h5{
+    font-size: 27px;
+  }
+
+  p{
+    font-size: 20px;
   }
 }
 
