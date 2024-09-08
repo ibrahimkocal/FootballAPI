@@ -16,6 +16,9 @@ html {
 
 body {
   color: white;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 #home {
@@ -25,17 +28,6 @@ body {
   background-attachment: fixed;
   background-position: 50% 100px;
   min-height: 700px;
-}
-#home .img-overlay {
-  position: absolute;
-  top: 1;
-  left: 0;
-  width: 100%;
-  min-height: 700px;
-  background: rgba(18, 18, 18, 0.8);
-}
-#home .home-inner {
-  padding-top: 80px;
 }
 #home h2 {
   font-size: 40px;
@@ -51,18 +43,7 @@ body {
   background-size: cover;
   background-attachment: fixed;
   background-position: 50% 100px;
-  min-height: 1800px;
-}
-#leagues .img-overlay {
-  position: absolute;
-  top: 1;
-  left: 0;
-  width: 100%;
-  min-height: 1800px;
-  background: rgba(18, 18, 18, 0.8);
-}
-#leagues .home-inner {
-  padding-top: 80px;
+  min-height: 700px;
 }
 #leagues h2 {
   font-size: 40px;
@@ -105,18 +86,7 @@ tbody tr th, td {
   background-size: cover;
   background-attachment: fixed;
   background-position: 50% 100px;
-  min-height: 1800px;
-}
-#teamDetails .img-overlay {
-  position: absolute;
-  top: 1;
-  left: 0;
-  width: 100%;
-  min-height: 1800px;
-  background: rgba(18, 18, 18, 0.8);
-}
-#teamDetails .home-inner {
-  padding-top: 80px;
+  min-height: 700px;
 }
 #teamDetails h2 {
   font-size: 40px;
@@ -136,66 +106,17 @@ tbody tr th, td {
 #teamDetails p {
   font-size: 20px;
 }
-
-.card {
-  position: relative;
-  width: 250px;
-  height: 170px;
-  background-color: #f2f2f2;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: hidden;
-  perspective: 1000px;
-  box-shadow: 0 0 0 5px rgba(255, 255, 255, 0.5019607843);
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+#teamDetails #teamsInfo h5 {
+  text-decoration: underline;
+  font-size: 20px;
 }
-.card:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.2);
-}
-.card svg {
-  width: 48px;
-  fill: #333;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.card:hover .card svg {
-  scale: 0;
-}
-.card__content {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  padding: 20px;
-  box-sizing: border-box;
-  background-color: #f2f2f2;
-  transform: rotateX(-90deg);
-  transform-origin: bottom;
-  transition: all 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.card:hover .card__content {
-  transform: rotateX(0deg);
-}
-.card__title {
-  margin-top: 20%;
-  text-align: center;
-  font-size: 24px;
-  color: #333;
-  font-weight: 700;
-}
-.card__title a {
-  text-decoration: none;
-  color: black;
-}
-.card__title a:hover {
-  color: rgb(10, 10, 167);
+#teamDetails #teamsInfo p {
+  font-size: 17px;
 }
 
 /* FOOTER */
 footer {
+  margin-top: auto;
   background-color: black;
 }
 
@@ -247,18 +168,7 @@ footer {
     background-size: cover;
     background-attachment: fixed;
     background-position: 50% 100px;
-    min-height: 4360px;
-  }
-  #leagues .img-overlay {
-    position: absolute;
-    top: 1;
-    left: 0;
-    width: 100%;
-    min-height: 4360px;
-    background: rgba(18, 18, 18, 0.8);
-  }
-  #leagues .home-inner {
-    padding-top: 80px;
+    min-height: 700px;
   }
   #leagues h2 {
     font-size: 40px;

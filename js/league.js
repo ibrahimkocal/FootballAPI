@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // DOM elemanlarını seçin
   let leagueName_Title = document.querySelector("#leagueName_Title");
   let about = document.querySelector("#about");
   let leagueName = document.querySelector("#leagueName");
@@ -9,7 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let leaguePuanDurumu = document.querySelector("#leaguePuanDurumu");
   let teamsDOM = document.querySelector("#teams");
 
-  // Lig bilgilerini tanımlayın
   const leagues = {
     "superLig": {
       id: "4339",
@@ -66,21 +64,21 @@ document.addEventListener('DOMContentLoaded', () => {
           let league_Poster = selectedLeague.strPoster;
           let league_Info = selectedLeague.strDescriptionEN;
 
-          leagueName_Title.textContent = league_Name;
-          about.innerHTML = `<h5>Kuruluş</h5><p>${league_Kurulus}</p><br><h5>Ülke</h5><p>${league_Country}</p>`;
-          leagueName.innerHTML = `<h5>Lig Adı</h5><a id="leagueName" href="">${league_Name}</a>`;
-          leagueLogo.innerHTML = `<h5>Logo</h5><img src="${league_Logo}" width="190">`;
-          leaguePoster.innerHTML = `<h5>Poster</h5><img src="${league_Poster}" width="220">`;
-          leagueInfo.innerHTML = `<h5>Tanım</h5><p>${league_Info}</p>`;
-
+          leagueName_Title.innerHTML = `<strong>${league_Name}</strong>`; 
+          about.innerHTML = `<h5><strong>Kuruluş</strong></h5><p>${league_Kurulus}</p><br><h5><strong>Ülke</strong></h5><p>${league_Country}</p>`;
+          leagueName.innerHTML = `<h5><strong>Lig Adı</strong></h5><a id="leagueName" href="">${league_Name}</a>`;
+          leagueLogo.innerHTML = `<h5><strong>Logo</strong></h5><img src="${league_Logo}" width="190">`;
+          leaguePoster.innerHTML = `<h5><strong>Poster</strong></h5><img src="${league_Poster}" width="220">`;
+          leagueInfo.innerHTML = `<h5><strong>Tanım</strong></h5><p>${league_Info}</p>`;
+          document.title = league_Name;
           // PUAN DURUMU
           fetch(`https://www.thesportsdb.com/api/v1/json/3/lookuptable.php?l=${id}&s=2024-2025`)
             .then(response => response.json())
             .then(data => {
               let table = data.table;
               if (table && table.length > 0) {
-                let tableContent = `<h5 class="text-center text-lg-start">Puan Durumu</h5>`;
-                tableContent += `<div class="d-flex">
+                let tableContent = `<h5 class="text-center text-lg-start"><strong>Puan Durumu</strong></h5>`;
+                tableContent += `<div class="d-flex justify-content-center justify-content-lg-start">
                                               <div class="row">
                                                   <table class="table text-white">
                                                       <thead>
