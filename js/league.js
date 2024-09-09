@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                                   <th scope="row">${table[i].intRank}.</th>
                                                   <td><img src="${table[i].strBadge}" width="24"></td>
                                                   <td class="d-block d-md-none">${table[i].strTeam.substring(0, 3).toUpperCase()}</td>
-                                                  <td class="d-none d-md-block">${table[i].strTeam}</td>
+                                                  <td class="d-none d-md-block"><a style="font-size:16px;" href="teams.html?teamName=${table[i].strTeam}">${table[i].strTeam}</a></td>
                                                   <td>${table[i].intPlayed}</td>
                                                   <td>${table[i].intWin}</td>
                                                   <td>${table[i].intDraw}</td>
@@ -136,8 +136,8 @@ document.addEventListener('DOMContentLoaded', () => {
               teams.forEach((element, index) => {
                   teamsContent += `
                       <div class="col-4 text-center">
-                          <img src="${element.strBadge}" alt="${element.strTeam}" class="img-fluid">
-                          <a style="font-size:18px;" href="teams.html?teamName=${element.strTeam}" class="mt-2">${element.strTeam}</a>
+                          <a href="teams.html?teamName=${element.strTeam}"><img src="${element.strBadge}" alt="${element.strTeam}" class="img-fluid"></a>
+                          <a style="font-size:16px;" href="teams.html?teamName=${element.strTeam}" class="mt-2">${element.strTeam}</a>
                       </div>`;
                   counter++;
 
@@ -159,4 +159,27 @@ document.addEventListener('DOMContentLoaded', () => {
   } else {
     console.error('Geçersiz lig parametresi.');
   }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const teamSearchForm = document.getElementById('teamSearchForm');
+  const teamSearchInput = document.getElementById('teamSearchInput');
+  const teamSearchFormButton = document.getElementById('teamSearchFormButton');
+
+  const searchTeam = () => {
+      const teamName = teamSearchInput.value.trim();
+      if (teamName) {
+          window.location.href = `teams.html?teamName=${teamName}`;
+      }
+  };
+
+  teamSearchFormButton.addEventListener('click', (event) => {
+      event.preventDefault();
+      searchTeam();
+  });
+
+  teamSearchForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      searchTeam();
+  });
 });

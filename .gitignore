@@ -1,3 +1,3 @@
 # Ignore PNG and JPG files
-# *.png
-# *.jpg
+*.png
+*.jpg

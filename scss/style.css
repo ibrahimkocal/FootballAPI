@@ -114,6 +114,73 @@ tbody tr th, td {
   font-size: 17px;
 }
 
+/* TAKIM ARA FORM INPUT */
+.form {
+  position: relative;
+  width: 200px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  padding-inline: 0.8em;
+  border-radius: 30px;
+  transition: border-radius 0.5s ease;
+  background: #fff;
+}
+.form button {
+  border: none;
+  background: none;
+  color: #8b8ba7;
+}
+.form .input {
+  font-size: 0.9rem;
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  padding-inline: 0.5em;
+  padding-block: 0.7em;
+  border: none;
+}
+.form .input:focus {
+  outline: none;
+}
+.form:before {
+  content: "";
+  position: absolute;
+  background: #2f2ee9;
+  transform: scaleX(0);
+  transform-origin: center;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 0;
+  border-radius: 1px;
+  transition: transform 0.3s ease;
+}
+.form:focus-within {
+  border-radius: 1px;
+}
+.form:focus-within:before {
+  transform: scale(1);
+}
+.form svg {
+  width: 17px;
+  margin-top: 3px;
+}
+.form .reset {
+  border: none;
+  background: none;
+  opacity: 0;
+  visibility: hidden;
+}
+.form .reset ~ .input:not(:-moz-placeholder-shown) ~ .reset {
+  opacity: 1;
+  visibility: visible;
+}
+.form .reset ~ .input:not(:placeholder-shown) ~ .reset {
+  opacity: 1;
+  visibility: visible;
+}
+
 /* FOOTER */
 footer {
   margin-top: auto;

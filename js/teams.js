@@ -65,29 +65,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
                                 return `<div class="mt-5">
                             <div class="d-flex align-items-center justify-content-between mt-4">
-                                <div class="d-flex">
-                                    <img src="${match.strLeagueBadge}" width="50">
+                                <div class="d-flex ">
+                                    <img src="${match.strLeagueBadge}" width="40">
                                     <p class="d-block d-lg-none my-auto">24/25</p>    
-                                    <p class="d-none d-lg-block my-auto ms-2">${match.strSeason}</p>    
+                                    <p class="d-none d-lg-block my-auto ms-2">2024/2025</p>    
                                 </div>
-                                <div class="d-flex col-md-2">
-                                    <div class="align-items-center">
-                                        <img src="${match.strHomeTeamBadge}" width="40" alt="${match.strHomeTeam}">
-                                        <p class="d-block d-lg-none my-auto ">${match.strHomeTeam.substring(0, 3).toUpperCase()}</p>
-                                        <p class="d-none d-lg-block my-auto">${match.strHomeTeam}</p>
+                                <div class="d-flex align-items-center 6">
+                                    <img src=${match.strHomeTeamBadge} width="30">
+                                    <div class="d-flex mx-2">                                         
+                                        <p class="d-none d-lg-block align-items-center mt-3">
+                                            ${match.strHomeTeam} ${match.intHomeScore}-${match.intAwayScore} ${match.strAwayTeam}
+                                        </p>
+                                        <p class="d-block d-lg-none align-items-center mt-3">
+                                            ${match.strHomeTeam.substring(0, 3).toUpperCase()} ${match.intHomeScore}-${match.intAwayScore} ${match.strAwayTeam.substring(0, 3).toUpperCase()} 
+                                        </p>
                                     </div>
-                                    
-                                     <div class="align-items-center ms-3">
-                                        <img src="${match.strAwayTeamBadge}" width="40" alt="${match.strAwayTeam}">
-                                        <p class="d-block d-lg-none my-auto">${match.strAwayTeam.substring(0, 3).toUpperCase()}</p>
-                                        <p class="d-none d-lg-block my-auto">${match.strAwayTeam}</p>
-                                    </div>     
-                                    
+                                    <img src=${match.strAwayTeamBadge} width="30">
                                 </div>
-                                 <div class="d-flex align-items-center justify-content-between">
-                                    <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678116-calendar-512.png" width="40" alt="${match.strTeam}">
+                                <div class="d-flex align-items-center text-center">
+                                    <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678116-calendar-512.png" width="30" alt="${match.strTeam}">
                                     <p class="d-block d-lg-none my-auto ms-2">${matchDate.slice(0, 2)}/${matchDate.slice(3, 5)}<br>${match.strTime.slice(0, 5)}</p>             
-                                    <p class="d-none d-lg-block my-auto ms-2">${matchDate} | ${match.strTime.slice(0, 5)}</p>             
+                                    <p class="d-none d-lg-block my-auto ms-2">${matchDate} <br> ${match.strTime.slice(0, 5)}</p>             
                                 </div>
                             </div>
                         </div>
@@ -95,7 +93,7 @@ document.addEventListener('DOMContentLoaded', () => {
                             }).join('');
 
                             const matchCal = `<div id="matchCal" class="mt-5">
-                                <h5><strong>Ev Saha Son 5 Maç</strong></h5>
+                                <h5><strong>İç Saha Son 5 Maç</strong></h5>
                                 ${matchContent}
                             </div>`;
 
@@ -112,4 +110,27 @@ document.addEventListener('DOMContentLoaded', () => {
     } else {
         teamAbout.innerHTML = `<p>Geçersiz takım ID'si.</p>`;
     }
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const teamSearchForm = document.getElementById('teamSearchForm');
+    const teamSearchInput = document.getElementById('teamSearchInput');
+    const teamSearchFormButton = document.getElementById('teamSearchFormButton');
+
+    const searchTeam = () => {
+        const teamName = teamSearchInput.value.trim();
+        if (teamName) {
+            window.location.href = `teams.html?teamName=${teamName}`;
+        }
+    };
+
+    teamSearchFormButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        searchTeam();
+    });
+
+    teamSearchForm.addEventListener('submit', (event) => {
+        event.preventDefault();
+        searchTeam();
+    });
 });

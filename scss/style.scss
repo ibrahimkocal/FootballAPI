@@ -126,6 +126,90 @@ tbody tr th, td{
   }
 }
 
+/* TAKIM ARA FORM INPUT */
+$form-timing: 0.3s;
+$form-width: 200px;
+$form-height: 40px;
+$form-border-height: 2px;
+$form-input-bg: #fff;
+$form-border-color: #2f2ee9;
+$form-border-radius: 30px;
+$form-after-border-radius: 1px;
+
+.form {
+  position: relative;
+  width: $form-width;
+  height: $form-height;
+  display: flex;
+  align-items: center;
+  padding-inline: 0.8em;
+  border-radius: $form-border-radius;
+  transition: border-radius 0.5s ease;
+  background: $form-input-bg;
+
+  button {
+    border: none;
+    background: none;
+    color: #8b8ba7;
+  }
+
+  .input {
+    font-size: 0.9rem;
+    background-color: transparent;
+    width: 100%;
+    height: 100%;
+    padding-inline: 0.5em;
+    padding-block: 0.7em;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    background: $form-border-color;
+    transform: scaleX(0);
+    transform-origin: center;
+    width: 100%;
+    height: $form-border-height;
+    left: 0;
+    bottom: 0;
+    border-radius: 1px;
+    transition: transform $form-timing ease;
+  }
+
+  &:focus-within {
+    border-radius: $form-after-border-radius;
+
+    &:before {
+      transform: scale(1);
+    }
+  }
+
+  svg {
+    width: 17px;
+    margin-top: 3px;
+  }
+
+  .reset {
+    border: none;
+    background: none;
+    opacity: 0;
+    visibility: hidden;
+
+    ~ .input:not(:placeholder-shown) {
+      & ~ .reset {
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+  }
+}
+
+
 /* FOOTER */
 $discord : #5865F2;
 $linkedin: #0077b5;
@@ -165,10 +249,7 @@ footer{
   @include button-style($github);
 }
 
-
 /* media screen */
-
-
 @media only screen and (max-width: 1000px) {
   #leagues {
     @include image-url($stslPhoto);
@@ -208,4 +289,6 @@ footer{
     }
   }
 } 
+
+
 
