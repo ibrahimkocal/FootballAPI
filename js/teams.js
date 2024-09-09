@@ -116,7 +116,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const teamSearchForm = document.getElementById('teamSearchForm');
     const teamSearchInput = document.getElementById('teamSearchInput');
     const teamSearchFormButton = document.getElementById('teamSearchFormButton');
-    
+
+    const showToast = (message) => {
+        document.querySelector('#liveToast .toast-body').textContent = message;
+        var toastElement = document.getElementById('liveToast');
+        var toast = new bootstrap.Toast(toastElement);
+        
+        toast.show();
+    };
+
     const searchTeam = () => {
         let teamName = teamSearchInput.value.trim();
 
@@ -126,10 +134,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(data => {
                     if (data.teams && data.teams.length > 0) {
                         window.location.href = `teams.html?teamName=${teamName}`;
-                        document.title = "Takım Arama";
                     } else {
-                        alert("Böyle bir takım bulunamadı!");
-                    }
+                        showToast("Böyle bir takım bulunamadı");
+                    }    
                 })
                 .catch(error => {
                     console.error('Error fetching team data:', error);
@@ -148,3 +155,5 @@ document.addEventListener('DOMContentLoaded', () => {
         searchTeam();
     });
 });
+
+
