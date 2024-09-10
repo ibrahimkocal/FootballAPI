@@ -63,34 +63,34 @@ document.addEventListener('DOMContentLoaded', () => {
                             const matchContent = matches.map(match => {
                                 const matchDate = new Date(match.dateEvent).toLocaleDateString();
 
-                                return `<div class="mt-5">
-                            <div class="d-flex align-items-center justify-content-between mt-4">
-                                <div class="d-flex ">
-                                    <img src="${match.strLeagueBadge}" width="40">
-                                    <p class="d-block d-lg-none my-auto">24/25</p>    
-                                    <p class="d-none d-lg-block my-auto ms-2">2024/2025</p>    
+                                return `
+                        <div class="match-row d-flex align-items-center mb-3 ms-md-5">
+                            <div class="d-flex align-items-center">
+                                <img src="${match.strLeagueBadge}" width="40" alt="${match.strLeague}">
+                                <p class="season-info d-block d-lg-none my-auto ms-2">24/25</p>    
+                                <p class="season-info d-none d-lg-block my-auto ms-2">2024/2025</p>    
+                            </div>
+                            <div class="d-flex align-items-center team-info ms-4 ms-md-5">
+                                <img src="${match.strHomeTeamBadge}" width="30" alt="${match.strHomeTeam}">
+                                <div class="d-flex flex-column mx-2 text-center text-lg-start">                                         
+                                    <p class="d-none d-lg-block mt-3">
+                                        ${match.strHomeTeam} ${match.intHomeScore}-${match.intAwayScore} ${match.strAwayTeam}
+                                    </p>
+                                    <p class="d-block d-lg-none">
+                                        ${match.strHomeTeam.substring(0, 3).toUpperCase()} ${match.intHomeScore}-${match.intAwayScore} ${match.strAwayTeam.substring(0, 3).toUpperCase()}
+                                    </p>
                                 </div>
-                                <div class="d-flex align-items-center">
-                                    <img src=${match.strHomeTeamBadge} width="30">
-                                    <div class="d-flex mx-2">                                         
-                                        <p class="d-none d-lg-block align-items-center mt-3">
-                                            ${match.strHomeTeam} ${match.intHomeScore}-${match.intAwayScore} ${match.strAwayTeam}
-                                        </p>
-                                        <p class="d-block d-lg-none align-items-center mt-3">
-                                            ${match.strHomeTeam.substring(0, 3).toUpperCase()} ${match.intHomeScore}-${match.intAwayScore} ${match.strAwayTeam.substring(0, 3).toUpperCase()} 
-                                        </p>
-                                    </div>
-                                    <img src=${match.strAwayTeamBadge} width="30">
-                                </div>
-                                <div class="d-flex align-items-center text-center">
-                                    <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678116-calendar-512.png" width="30" alt="${match.strTeam}">
-                                    <p class="d-block d-lg-none my-auto ms-2">${matchDate.slice(0, 2)}/${matchDate.slice(3, 5)}<br>${match.strTime.slice(0, 5)}</p>             
-                                    <p class="d-none d-lg-block my-auto ms-2">${matchDate} <br> ${match.strTime.slice(0, 5)}</p>             
-                                </div>
+                                <img src="${match.strAwayTeamBadge}" width="30" alt="${match.strAwayTeam}">
+                            </div>
+                            <div class="d-flex align-items-center text-center date-info ms-3 ms-md-0 ">
+                                <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678116-calendar-512.png" width="30" alt="${match.strTeam}">
+                                <p class="d-block d-lg-none my-auto ms-2">${matchDate.slice(0, 2)}/${matchDate.slice(3, 5)}<br>${match.strTime.slice(0, 5)}</p>             
+                                <p class="d-none d-lg-block my-auto ms-2">${matchDate} <br> ${match.strTime.slice(0, 5)}</p>             
                             </div>
                         </div>
-                        <br>`;
-                            }).join('');
+                        <br>
+                    `;
+                }).join('');
 
                             const matchCal = `<div id="matchCal" class="mt-5">
                                 <h5><strong>İç Saha Son 5 Maç</strong></h5>

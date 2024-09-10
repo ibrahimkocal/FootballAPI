@@ -27,6 +27,53 @@ body {
 $mainPhoto: photo1;
 $stslPhoto: photo2;
 
+.match-row {
+  min-height: 80px; 
+
+  .team-info,
+  .date-info {
+    flex: 1; 
+    text-align: center; 
+  }
+
+  .season-info {
+    margin-left: 10px; 
+
+  .team-info img,
+  .date-info img {
+    margin-right: 10px; // Resimlerin yanındaki metni biraz ayırmak için
+  }
+
+  // Mobil cihazlar için düzenlemeler
+  @media (max-width: 768px) {
+    .team-info {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: nowrap; 
+      gap: 1px; 
+
+      img{
+        margin-right: 8px;
+      }
+      
+      p {
+        margin: 0; 
+        white-space: nowrap; 
+      }
+    }
+
+    .date-info img {
+      margin-right: 10px;
+    }
+
+    .season-info {
+      margin-left: 8px; 
+    }
+    }
+  }
+}
+
 @mixin image-url($imageUrl){
   background-image: url("../img/#{$imageUrl}.jpg");
   background-repeat: no-repeat;
@@ -80,7 +127,7 @@ tbody tr th, td{
   border: none;
 }
 
-#leagueInfo, #leaguePuanDurumu, #teams{
+#leagueInfo, #leaguePuanDurumu, #teams, #season{
   h5{
     text-decoration: underline;
     font-size: 20px;
@@ -125,6 +172,38 @@ tbody tr th, td{
     }
   }
 }
+
+/* FİKSTÜR */
+#season {
+
+  a{
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: 0.3s;
+    
+    &:hover{
+        color: rgb(10, 184, 7);
+    }
+  }   
+
+  h2{
+    font-size: 30px;
+  }
+
+  h5{
+    font-size: 27px;
+  }
+
+  p{
+    font-size: 20px;
+  }
+}
+
+tbody tr th, td{
+  border: none;
+}
+
 
 /* TAKIM ARA FORM INPUT */
 $form-timing: 0.3s;
@@ -209,7 +288,6 @@ $form-after-border-radius: 1px;
   }
 }
 
-
 /* FOOTER */
 $discord : #5865F2;
 $linkedin: #0077b5;
@@ -274,7 +352,7 @@ footer{
     }
   }
 
-  #leagueInfo, #leaguePuanDurumu, #teams{
+  #leagueInfo, #leaguePuanDurumu, #teams, #season{
     h5{
       text-decoration: underline;
       font-size: 28px;

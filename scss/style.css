@@ -21,6 +21,44 @@ body {
   min-height: 100vh;
 }
 
+.match-row {
+  min-height: 80px;
+}
+.match-row .team-info,
+.match-row .date-info {
+  flex: 1;
+  text-align: center;
+}
+.match-row .season-info {
+  margin-left: 10px;
+}
+.match-row .season-info .team-info img,
+.match-row .season-info .date-info img {
+  margin-right: 10px;
+}
+@media (max-width: 768px) {
+  .match-row .season-info .team-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 1px;
+  }
+  .match-row .season-info .team-info img {
+    margin-right: 8px;
+  }
+  .match-row .season-info .team-info p {
+    margin: 0;
+    white-space: nowrap;
+  }
+  .match-row .season-info .date-info img {
+    margin-right: 10px;
+  }
+  .match-row .season-info .season-info {
+    margin-left: 8px;
+  }
+}
+
 #home {
   background-image: url("../img/photo1.jpg");
   background-repeat: no-repeat;
@@ -72,11 +110,11 @@ tbody tr th, td {
   border: none;
 }
 
-#leagueInfo h5, #leaguePuanDurumu h5, #teams h5 {
+#leagueInfo h5, #leaguePuanDurumu h5, #teams h5, #season h5 {
   text-decoration: underline;
   font-size: 20px;
 }
-#leagueInfo p, #leaguePuanDurumu p, #teams p {
+#leagueInfo p, #leaguePuanDurumu p, #teams p, #season p {
   font-size: 17px;
 }
 
@@ -112,6 +150,30 @@ tbody tr th, td {
 }
 #teamDetails #teamsInfo p {
   font-size: 17px;
+}
+
+/* FİKSTÜR */
+#season a {
+  text-decoration: none;
+  color: white;
+  font-size: 20px;
+  transition: 0.3s;
+}
+#season a:hover {
+  color: rgb(10, 184, 7);
+}
+#season h2 {
+  font-size: 30px;
+}
+#season h5 {
+  font-size: 27px;
+}
+#season p {
+  font-size: 20px;
+}
+
+tbody tr th, td {
+  border: none;
 }
 
 /* TAKIM ARA FORM INPUT */
@@ -255,14 +317,14 @@ footer {
   #leagues p {
     font-size: 20px;
   }
-  #leagueInfo h5, #leaguePuanDurumu h5, #teams h5 {
+  #leagueInfo h5, #leaguePuanDurumu h5, #teams h5, #season h5 {
     text-decoration: underline;
     font-size: 28px;
   }
-  #leagueInfo p, #leaguePuanDurumu p, #teams p {
+  #leagueInfo p, #leaguePuanDurumu p, #teams p, #season p {
     font-size: 15px;
   }
-  #leagueInfo tbody tr th, #leagueInfo td, #leaguePuanDurumu tbody tr th, #leaguePuanDurumu td, #teams tbody tr th, #teams td {
+  #leagueInfo tbody tr th, #leagueInfo td, #leaguePuanDurumu tbody tr th, #leaguePuanDurumu td, #teams tbody tr th, #teams td, #season tbody tr th, #season td {
     font-size: 12px;
   }
 }/*# sourceMappingURL=style.css.map */

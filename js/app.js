@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => response.json())
                 .then(data => {
                     if (data.teams && data.teams.length > 0) {
-                        window.location.href = `teams.html?teamName=${teamNameUpper}`;
+                        window.location.href = `leagues/teams.html?teamName=${teamNameUpper}`;
                     } else {
                         alert("Böyle bir takım bulunamadı!");
                     }
