@@ -1,28 +1,25 @@
+
 document.addEventListener('DOMContentLoaded', () => {
     const teamSearchForm = document.getElementById('teamSearchForm');
     const teamSearchInput = document.getElementById('teamSearchInput');
     const teamSearchFormButton = document.getElementById('teamSearchFormButton');
 
-    const showToast = (message) => {
-        document.querySelector('#liveToast .toast-body').textContent = message;
-        var toastElement = document.getElementById('liveToast');
-        var toast = new bootstrap.Toast(toastElement);
-        
-        toast.show();
-    };
-
     const searchTeam = () => {
         let teamName = teamSearchInput.value.trim();
+        let teamNameUpper = teamName.split(' ')                 
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()  
+            )
+            .join(' ');                     
 
         if (teamName) {
-            fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamName}`)
+            fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamNameUpper}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.teams && data.teams.length > 0) {
-                        window.location.href = `leagues/teams.html?teamName=${teamName}`;
+                        window.location.href = `teams.html?teamName=${teamNameUpper}`;
                     } else {
-                        showToast("Böyle bir takım bulunamadı");
-                    }    
+                        alert("Böyle bir takım bulunamadı!");
+                    }
                 })
                 .catch(error => {
                     console.error('Error fetching team data:', error);
@@ -41,10 +38,6 @@ document.addEventListener('DOMContentLoaded', () => {
         searchTeam();
     });
 });
-
-
-
-
 
 // let teamInput = document.querySelector("#teamInput");
 // let teamInputButton = document.querySelector("#teamInputButton");

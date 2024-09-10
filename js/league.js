@@ -165,17 +165,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const teamSearchForm = document.getElementById('teamSearchForm');
   const teamSearchInput = document.getElementById('teamSearchInput');
   const teamSearchFormButton = document.getElementById('teamSearchFormButton');
-  
+
   const searchTeam = () => {
       let teamName = teamSearchInput.value.trim();
+      let teamNameUpper = teamName.split(' ')                 
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()  
+          )
+          .join(' ');                     
 
       if (teamName) {
-          fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamName}`)
+          fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamNameUpper}`)
               .then(response => response.json())
               .then(data => {
                   if (data.teams && data.teams.length > 0) {
-                      window.location.href = `teams.html?teamName=${teamName}`;
-                      document.title = "Takım Arama";
+                      window.location.href = `teams.html?teamName=${teamNameUpper}`;
                   } else {
                       alert("Böyle bir takım bulunamadı!");
                   }

@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <p class="d-block d-lg-none my-auto">24/25</p>    
                                     <p class="d-none d-lg-block my-auto ms-2">2024/2025</p>    
                                 </div>
-                                <div class="d-flex align-items-center 6">
+                                <div class="d-flex align-items-center">
                                     <img src=${match.strHomeTeamBadge} width="30">
                                     <div class="d-flex mx-2">                                         
                                         <p class="d-none d-lg-block align-items-center mt-3">
@@ -117,26 +117,22 @@ document.addEventListener('DOMContentLoaded', () => {
     const teamSearchInput = document.getElementById('teamSearchInput');
     const teamSearchFormButton = document.getElementById('teamSearchFormButton');
 
-    const showToast = (message) => {
-        document.querySelector('#liveToast .toast-body').textContent = message;
-        var toastElement = document.getElementById('liveToast');
-        var toast = new bootstrap.Toast(toastElement);
-        
-        toast.show();
-    };
-
     const searchTeam = () => {
         let teamName = teamSearchInput.value.trim();
+        let teamNameUpper = teamName.split(' ')                 
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()  
+            )
+            .join(' ');                     
 
         if (teamName) {
-            fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamName}`)
+            fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamNameUpper}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data.teams && data.teams.length > 0) {
-                        window.location.href = `teams.html?teamName=${teamName}`;
+                        window.location.href = `teams.html?teamName=${teamNameUpper}`;
                     } else {
-                        showToast("Böyle bir takım bulunamadı");
-                    }    
+                        alert("Böyle bir takım bulunamadı!");
+                    }
                 })
                 .catch(error => {
                     console.error('Error fetching team data:', error);
@@ -155,5 +151,3 @@ document.addEventListener('DOMContentLoaded', () => {
         searchTeam();
     });
 });
-
-
