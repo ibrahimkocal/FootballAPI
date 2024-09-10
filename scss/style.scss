@@ -45,31 +45,19 @@ $stslPhoto: photo2;
   }
 
   // Mobil cihazlar için düzenlemeler
-  @media (max-width: 768px) {
-    .team-info {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: nowrap; 
-      gap: 1px; 
+    @media (max-width: 768px) {
+      .team-info {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap; // Tek satırda kalmasını sağlıyoruz
+        gap: 5px; // Takım isimleri ve skorlar arasına küçük bir boşluk ekliyoruz
 
-      img{
-        margin-right: 8px;
+        p {
+          margin: 0; // Paragraf aralarındaki boşlukları kaldırıyoruz
+          white-space: nowrap; // Metnin tek satırda kalmasını sağlıyoruz
+        }
       }
-      
-      p {
-        margin: 0; 
-        white-space: nowrap; 
-      }
-    }
-
-    .date-info img {
-      margin-right: 10px;
-    }
-
-    .season-info {
-      margin-left: 8px; 
-    }
     }
   }
 }

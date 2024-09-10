@@ -42,20 +42,11 @@ body {
     justify-content: center;
     align-items: center;
     flex-wrap: nowrap;
-    gap: 1px;
-  }
-  .match-row .season-info .team-info img {
-    margin-right: 8px;
+    gap: 5px;
   }
   .match-row .season-info .team-info p {
     margin: 0;
     white-space: nowrap;
-  }
-  .match-row .season-info .date-info img {
-    margin-right: 10px;
-  }
-  .match-row .season-info .season-info {
-    margin-left: 8px;
   }
 }
 

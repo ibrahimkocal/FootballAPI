@@ -24,17 +24,17 @@ document.addEventListener('DOMContentLoaded', () => {
       url: "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=English%20Premier%20League",
       country: "England"
     },
-    "laLiga":{
+    "laLiga": {
       id: "4335",
       url: "https://thesportsdb.com/api/v1/json/3/search_all_teams.php?l=Spanish%20La%20Liga",
       country: "Spain"
     },
-    "serieA":{
+    "serieA": {
       id: "4332",
       url: "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=Italian%20Serie%20A",
       country: "Italy"
     },
-    "ligue1":{
+    "ligue1": {
       id: "4334",
       url: "https://www.thesportsdb.com/api/v1/json/3/search_all_teams.php?l=French%20Ligue%201",
       country: "France"
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
           let league_Poster = selectedLeague.strPoster;
           let league_Info = selectedLeague.strDescriptionEN;
 
-          leagueName_Title.innerHTML = `<strong>${league_Name}</strong>`; 
+          leagueName_Title.innerHTML = `<strong>${league_Name}</strong>`;
           about.innerHTML = `<h5><strong>Kuruluş</strong></h5><p>${league_Kurulus}</p><br><h5><strong>Ülke</strong></h5><p>${league_Country}</p>`;
           leagueName.innerHTML = `<h5><strong>Lig Adı</strong></h5><a id="leagueName" href="">${league_Name}</a>`;
           leagueLogo.innerHTML = `<h5><strong>Logo</strong></h5><img src="${league_Logo}" width="190">`;
@@ -127,29 +127,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
           // TAKIMLAR
           fetch(url)
-          .then(response => response.json())
-          .then(data => {
+            .then(response => response.json())
+            .then(data => {
               let teams = data.teams;
               let teamsContent = `<h5>Takımlar</h5><div class="row">`;
               let counter = 0;
 
               teams.forEach((element, index) => {
-                  teamsContent += `
+                teamsContent += `
                       <div class="col-4 text-center">
                           <a href="teams.html?teamName=${element.strTeam}"><img src="${element.strBadge}" alt="${element.strTeam}" class="img-fluid"></a>
                           <a style="font-size:16px;" href="teams.html?teamName=${element.strTeam}" class="mt-2">${element.strTeam}</a>
                       </div>`;
-                  counter++;
+                counter++;
 
-                  if (counter % 3 === 0 && index !== teams.length - 1) {
-                      teamsContent += `</div><div class="row mt-2">`;
-                  }
+                if (counter % 3 === 0 && index !== teams.length - 1) {
+                  teamsContent += `</div><div class="row mt-2">`;
+                }
               });
 
               teamsContent += `</div>`;
               teamsDOM.innerHTML = teamsContent;
-          })
-         .catch(error => console.error('Takımlar isteği sırasında bir hata oluştu:', error));
+            })
+            .catch(error => console.error('Takımlar isteği sırasında bir hata oluştu:', error));
 
         } else {
           console.error('Lig bilgisi bulunamadı.');
@@ -166,37 +166,44 @@ document.addEventListener('DOMContentLoaded', () => {
   const teamSearchInput = document.getElementById('teamSearchInput');
   const teamSearchFormButton = document.getElementById('teamSearchFormButton');
 
-  const searchTeam = () => {
-      let teamName = teamSearchInput.value.trim();
-      let teamNameUpper = teamName.split(' ')                 
-          .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()  
-          )
-          .join(' ');                     
+  const showToast = (message) => {
+    document.querySelector('#liveToast .toast-body').textContent = message;
+    var toastElement = document.getElementById('liveToast');
+    var toast = new bootstrap.Toast(toastElement);
+    toast.show();
+  };
 
-      if (teamName) {
-          fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamNameUpper}`)
-              .then(response => response.json())
-              .then(data => {
-                  if (data.teams && data.teams.length > 0) {
-                      window.location.href = `teams.html?teamName=${teamNameUpper}`;
-                  } else {
-                      alert("Böyle bir takım bulunamadı!");
-                  }
-              })
-              .catch(error => {
-                  console.error('Error fetching team data:', error);
-                  alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
-              });
-      }
+  const searchTeam = () => {
+    let teamName = teamSearchInput.value.trim();
+    let teamNameUpper = teamName.split(' ')
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
+      )
+      .join(' ');
+
+    if (teamName) {
+      fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamNameUpper}`)
+        .then(response => response.json())
+        .then(data => {
+          if (data.teams && data.teams.length > 0) {
+            window.location.href = `teams.html?teamName=${teamNameUpper}`;
+          } else {
+            showToast("Böyle bir takım bulunamadı");
+          }
+        })
+        .catch(error => {
+          console.error('Error fetching team data:', error);
+          showToast("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+        });
+    }
   };
 
   teamSearchFormButton.addEventListener('click', (event) => {
-      event.preventDefault();
-      searchTeam();
+    event.preventDefault();
+    searchTeam();
   });
 
   teamSearchForm.addEventListener('submit', (event) => {
-      event.preventDefault();
-      searchTeam();
+    event.preventDefault();
+    searchTeam();
   });
 });

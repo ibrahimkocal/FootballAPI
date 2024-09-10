@@ -4,6 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const teamSearchInput = document.getElementById('teamSearchInput');
     const teamSearchFormButton = document.getElementById('teamSearchFormButton');
 
+    const showToast = (message) => {
+        document.querySelector('#liveToast .toast-body').textContent = message;
+        var toastElement = document.getElementById('liveToast');
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    };
+
     const searchTeam = () => {
         let teamName = teamSearchInput.value.trim();
         let teamNameUpper = teamName.split(' ')                 
@@ -16,14 +23,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 .then(response => response.json())
                 .then(data => {
                     if (data.teams && data.teams.length > 0) {
-                        window.location.href = `leagues/teams.html?teamName=${teamNameUpper}`;
+                        window.location.href = `teams.html?teamName=${teamNameUpper}`;
                     } else {
-                        alert("Böyle bir takım bulunamadı!");
+                        showToast("Böyle bir takım bulunamadı");
                     }
                 })
                 .catch(error => {
                     console.error('Error fetching team data:', error);
-                    alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+                    showToast("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
                 });
         }
     };

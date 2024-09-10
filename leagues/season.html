@@ -96,40 +96,35 @@
   <section id="season" class="mt-4">
     <div class="container">
       <div class="row">
-        <div class="d-block d-md-flex flex-column flex-md-row justify-content-center align-items-center text-center text-md-start">
-          <img class="img-fluid" src="https://www.thesportsdb.com/images/media/league/badge/h7xx231601671132.png" width="60">
-          <h2 class="mt-2 ms-md-3"><strong>Turkish Super Lig Fikstürü</strong></h2>
+        <div id="seasonImage"
+          class="d-block d-md-flex flex-column flex-md-row justify-content-center align-items-center text-center text-md-start">
         </div>
-      </div>  
-      <div class="row mt-4 mt-md-5 d-block d-md-flex align-items-start ">
-        <div class="col-12 col-md-4 ">
-          <select class="form-select form-select-sm mx-auto mt-4 mt-sm-0 mx-md-0" aria-label=".form-select-sm example" style="background-color: #e3f2fd; width: 220px;">
-            <option selected>Hafta Seçiniz</option>
-            <option value="1">1. Hafta</option>
-            <option value="2">2. Hafta</option>
-            <option value="3">Three</option>
+        <h2 id="leagueTitle" class="align-items-center text-center mt-2"></h2>
+      </div>
+      <div class="row mt-3">
+        <div class="col-md-6 offset-md-3 text-center">
+          <select id="weekSelect" class="form-select form-select-sm mx-auto" style="width: 220px;">
           </select>
         </div>
-        <div id="matchFikstur" class="col-12 col-md-8 mt-4 mt-md-0">
-          
-        </div>
-      </div> 
+      </div>
+      <div id="matchFikstur" class="mt-4">
+      </div>
     </div>
   </section>
-  
-  
-  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3 "></div>
-  <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
-    <div class="toast-header">
-      <strong class="me-auto">Uyarı</strong>
-      <small>Şimdi</small>
-      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
-    </div>
-    <div class="toast-body">
-      Bu bir uyarı mesajıdır.
+
+  <div id="toastContainer" class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="toast-header">
+        <strong class="me-auto">Uyarı</strong>
+        <small>Şimdi</small>
+        <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+      <div class="toast-body">
+        Bu bir uyarı mesajıdır.
+      </div>
     </div>
   </div>
-  </div>
+
 
   <footer id="footer" class="text-center p-4 text-white">
     <div class="container">

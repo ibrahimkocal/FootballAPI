@@ -70,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 <p class="season-info d-block d-lg-none my-auto ms-2">24/25</p>    
                                 <p class="season-info d-none d-lg-block my-auto ms-2">2024/2025</p>    
                             </div>
-                            <div class="d-flex align-items-center team-info ms-4 ms-md-5">
+                            <div class="d-flex align-items-center team-info ms-5 ">
                                 <img src="${match.strHomeTeamBadge}" width="30" alt="${match.strHomeTeam}">
                                 <div class="d-flex flex-column mx-2 text-center text-lg-start">                                         
                                     <p class="d-none d-lg-block mt-3">
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                 </div>
                                 <img src="${match.strAwayTeamBadge}" width="30" alt="${match.strAwayTeam}">
                             </div>
-                            <div class="d-flex align-items-center text-center date-info ms-3 ms-md-0 ">
+                            <div class="d-flex align-items-center text-center date-info ms-4 ms-md-0 ">
                                 <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678116-calendar-512.png" width="30" alt="${match.strTeam}">
                                 <p class="d-block d-lg-none my-auto ms-2">${matchDate.slice(0, 2)}/${matchDate.slice(3, 5)}<br>${match.strTime.slice(0, 5)}</p>             
                                 <p class="d-none d-lg-block my-auto ms-2">${matchDate} <br> ${match.strTime.slice(0, 5)}</p>             
@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </div>
                         <br>
                     `;
-                }).join('');
+                            }).join('');
 
                             const matchCal = `<div id="matchCal" class="mt-5">
                                 <h5><strong>İç Saha Son 5 Maç</strong></h5>
@@ -117,12 +117,19 @@ document.addEventListener('DOMContentLoaded', () => {
     const teamSearchInput = document.getElementById('teamSearchInput');
     const teamSearchFormButton = document.getElementById('teamSearchFormButton');
 
+    const showToast = (message) => {
+        document.querySelector('#liveToast .toast-body').textContent = message;
+        var toastElement = document.getElementById('liveToast');
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    };
+
     const searchTeam = () => {
         let teamName = teamSearchInput.value.trim();
-        let teamNameUpper = teamName.split(' ')                 
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()  
+        let teamNameUpper = teamName.split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase()
             )
-            .join(' ');                     
+            .join(' ');
 
         if (teamName) {
             fetch(`https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=${teamNameUpper}`)
@@ -131,12 +138,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     if (data.teams && data.teams.length > 0) {
                         window.location.href = `teams.html?teamName=${teamNameUpper}`;
                     } else {
-                        alert("Böyle bir takım bulunamadı!");
+                        showToast("Böyle bir takım bulunamadı");
                     }
                 })
                 .catch(error => {
                     console.error('Error fetching team data:', error);
-                    alert("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
+                    showToast("Bir hata oluştu. Lütfen daha sonra tekrar deneyin.");
                 });
         }
     };
