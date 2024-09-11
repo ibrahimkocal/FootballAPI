@@ -56,7 +56,7 @@ While creating this platform, I used **HTML**, **CSS & SCSS**, **JavaScript**, *
 ## FIXTURES 
 **Fixtures** gives the fixtures for the first 10-12 weeks of the leagues. After you reach the fixtures of the league you selected, the matches of the week you selected will appear.
 
-![Fixtures](img/fixtur.png)
+![Fixtures](img/fikstur.png)
 ![Fixtures - Mobile](img/fiksturMobile.png)
 
 **NOTE**: You can find a team that is not available in the **Leagues** or **Fixtures** section by searching in the **"Search"** section.
